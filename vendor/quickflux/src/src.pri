@@ -1,3 +1,13 @@
+TEMPLATE = lib
+QT += qml quick
+CONFIG += qmltypes staticlib
+
+QML_IMPORT_NAME = QuickFlux
+QML_IMPORT_MAJOR_VERSION = 1
+QML_IMPORT_MINOR_VERSION = 0
+
+TARGET = $$qtLibraryTarget(quickflux)
+
 INCLUDEPATH += $$PWD
 
 HEADERS += \

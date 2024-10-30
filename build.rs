@@ -44,7 +44,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         config.flag(f);
     }
     config
-        .include("vendor")
+        .include("vendor/quickflux/src")
         .include(&qt_include_path)
         .include(format!("{}/QtCore", qt_include_path))
         .include(format!("{}/QtQml", qt_include_path))
@@ -68,6 +68,7 @@ fn run_qmake(quickflux_path: &Path) -> Result<(), Box<dyn Error>> {
     let run = |qmake: &str| {
         Command::new(qmake)
             .arg("quickflux.pri")
+            .arg("DEFINES=QUICK_FLUX_DISABLE_AUTO_QML_REGISTER")
             .current_dir(&quickflux_path)
             .status()?
             .exit_ok()?;
